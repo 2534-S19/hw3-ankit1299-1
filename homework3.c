@@ -7,10 +7,11 @@ int main(void)
 {
     // Count variables to control the LEDs.
     unsigned int count0 = 0;
+
     unsigned int count1 = 0;
 
     // TODO: Declare the variables that main uses to interact with your state machine.
-
+    unsigned int buttonhistory = 0xFF;
 
     // Stops the Watchdog timer.
     initBoard();
@@ -36,12 +37,18 @@ int main(void)
         // TODO: If Timer0 has expired, increment count0.
         // YOU MUST WRITE timer0expired IN myTimer.c
 
-
+        if(timer0Expired())
+        {
+            count0 ++;
+        }
 
         // TODO: If Timer1 has expired, update the button history from the pushbutton value.
         // YOU MUST WRITE timer1expired IN myTimer.c
 
-
+        if(timer0Expired())
+        {
+            button_history;
+        }
 
         // TODO: Call the button state machine function to check for a completed, debounced button press.
         // YOU MUST WRITE THIS FUNCTION BELOW.
@@ -64,6 +71,59 @@ void initBoard()
 // Since count is an unsigned integer, you can mask the value in some way.
 void changeLaunchpadLED2(unsigned int count)
 {
+    switch(count % 8)
+    {
+    case 0:
+        //turnOn_LaunchpadLED1();
+        turnOn_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Blue();
+        turnOff_LaunchpadLED2Green();
+        break;
+    case 1:
+        //turnOn_LaunchpadLED1();
+        turnOff_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Blue();
+        turnOn_LaunchpadLED2Green();
+        break;
+
+    case 2:
+        //turnOn_LaunchpadLED1();
+        turnOn_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Blue();
+        turnOn_LaunchpadLED2Green();
+        break;
+
+    case 3:
+        //turnOn_LaunchpadLED1();
+        turnOff_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Blue();
+        turnOff_LaunchpadLED2Green();
+        break;
+    case 4:
+        //turnOn_LaunchpadLED1();
+        turnOn_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Blue();
+        turnOff_LaunchpadLED2Green();
+        break;
+    case 5:
+        //turnOn_LaunchpadLED1();
+        turnOff_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Blue();
+        turnOn_LaunchpadLED2Green();
+        break;
+    case 6:
+        //turnOn_LaunchpadLED1();
+        turnOn_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Blue();
+        turnOn_LaunchpadLED2Green();
+        break;
+    case 7:
+        //turnOn_LaunchpadLED1();
+        turnOff_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Blue();
+        turnOff_LaunchpadLED2Green();
+        break;
+    }
 
 }
 
@@ -71,7 +131,63 @@ void changeLaunchpadLED2(unsigned int count)
 // This is essentially a copy of the previous function, using a different LED
 void changeBoosterpackLED(unsigned int count)
 {
-
+    switch(count)
+    {
+    case 0:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 1:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 2:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 3:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 4:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 5:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 6:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 7:
+        //turnOn_LaunchpadLED1();
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    default:
+        turnOff_LaunchpadLED1();
+        turnOff_BoosterpackLEDRed();
+        turnOff_BoosterpackLEDBlue();
+        turnOff_BoosterpackLEDGreen();
+        break;
+    }
 }
 
 // TODO: Create a button state machine.
@@ -80,6 +196,14 @@ bool fsmBoosterpackButtonS1(unsigned int buttonhistory)
 {
     bool pressed = false;
 
+    if(buttonhistory == 0xFF)
+    {
+        pressed = false;
+    }
+    else if(buttonhistory == 0x00)
+    {
+        pressed = true;
+    }
 
     return pressed;
 }

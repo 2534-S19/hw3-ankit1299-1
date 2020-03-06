@@ -1,8 +1,8 @@
 /*
  * myGPIO.h
  *
- *  Created on:
- *      Author:
+ *  Created on: March 05, 2020
+ *      Author: Ankit Bhardwaj
  *
  */
 
@@ -49,6 +49,26 @@ void turnOn_BoosterpackLEDBlue();
 void turnOff_BoosterpackLEDBlue();
 
 // TODO: Define any constants that are local to myGPIO.c using #define
+#define RB BIT4 //Rightmost launchpad button
 
+#define RedLed2 BIT0 //red led2
+
+#define GreenLed2 BIT1 //Green led 2
+
+#define BlueLed2 BIT2 //Blue led 2
+
+#define L_LED BIT0 //Left led
+
+#define RED_BoostLed BIT6 // booster red led
+
+#define GREEN_BoostLed BIT4 // booster green led
+
+#define BLUE_BoostLed BIT6 // booster blue led
+
+#define B1 BIT1 // booster pack upper Button 1
+
+#define B2 BIT5 // booster pack lower Button 2
+
+#define LB BIT1 //left Button
 
 #endif /* MYGPIO_H_ */
