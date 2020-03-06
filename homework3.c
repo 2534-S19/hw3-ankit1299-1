@@ -47,7 +47,7 @@ int main(void)
 
         if(timer0Expired())
         {
-            button_history;
+            buttonhistory;
         }
 
         // TODO: Call the button state machine function to check for a completed, debounced button press.
